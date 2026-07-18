@@ -141,7 +141,6 @@
     { image: "images/round-ring.PNG", name: "Round Ring Keychain" },
     { image: "images/books_name.PNG", name: "Books Name Keychain" }
     { image: "images/books_name.PNG", name: "Books Name Keychain" }
-    { image: " ", name: "Books Name Keychain" }
   ];
 
   const grid = document.getElementById('catalog');
@@ -149,7 +148,6 @@
     const card = document.createElement('div');
     card.className = 'card';
     card.innerHTML = `
-     //<div class="tag-hole"></div> 
       <img src="${item.image}" alt="${item.name}">
       <div class="info">
         <p class="name">${item.name}</p>
