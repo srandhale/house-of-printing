@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Keychain Catalog</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --charcoal:#22252A;
+    --brass:#C9A15A;
+    --cream:#F6F3EC;
+    --rust:#A8552E;
+    --silver:#D9DCE0;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--charcoal);
+    font-family:'Space Grotesk', sans-serif;
+    padding-bottom:60px;
+  }
+  header{
+    padding:36px 20px 24px;
+    text-align:center;
+    border-bottom:2px solid var(--charcoal);
+  }
+  header .ring{
+    width:14px;height:14px;
+    border:3px solid var(--brass);
+    border-radius:50%;
+    margin:0 auto 14px;
+  }
+  header h1{
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size:clamp(28px, 6vw, 40px);
+    margin:0 0 6px;
+    letter-spacing:-0.5px;
+  }
+  header p{
+    margin:0;
+    font-size:14px;
+    color:#555;
+    letter-spacing:0.5px;
+    text-transform:uppercase;
+  }
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(150px, 1fr));
+    gap:18px;
+    padding:28px 18px;
+    max-width:900px;
+    margin:0 auto;
+  }
+  .card{
+    background:#fff;
+    border:1.5px solid var(--charcoal);
+    border-radius:10px;
+    overflow:hidden;
+    position:relative;
+    transition:transform 0.15s ease;
+  }
+  .card:active{ transform:scale(0.97); }
+  .tag-hole{
+    position:absolute;
+    top:10px; left:10px;
+    width:16px; height:16px;
+    background:var(--cream);
+    border:2px solid var(--charcoal);
+    border-radius:50%;
+    z-index:2;
+  }
+  .card img{
+    width:100%;
+    aspect-ratio:1/1;
+    object-fit:cover;
+    display:block;
+    border-bottom:1.5px solid var(--charcoal);
+    background:var(--silver);
+  }
+  .card .info{
+    padding:12px 12px 14px;
+  }
+  .card .name{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:16px;
+    margin:0 0 4px;
+  }
+  .card .price{
+    font-size:14px;
+    color:var(--rust);
+    font-weight:600;
+    margin:0;
+  }
+  .card .status{
+    display:inline-block;
+    margin-top:6px;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+    padding:2px 8px;
+    border-radius:20px;
+    background:var(--charcoal);
+    color:var(--cream);
+  }
+  .card .status.sold{
+    background:#999;
+  }
+  footer{
+    text-align:center;
+    font-size:13px;
+    color:#777;
+    margin-top:30px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="ring"></div>
+  <h1>Your Keychain Shop</h1>
+  <p>Scan • Browse • Choose your favorite</p>
+</header>
+
+<div class="grid" id="catalog"></div>
+
+<footer>Message us to order — thank you for looking!</footer>
+
+<script>
+  // ---- EDIT YOUR ITEMS HERE ----
+  // image: paste a photo link (upload to imgur.com, or your phone's cloud photo link)
+  // name: item name
+  // price: price text
+  // available: true = "Available", false = "Sold"
+  const items = [
+    { image: "https://placehold.co/400x400/D9DCE0/22252A?text=Photo+1", name: "Sample Keychain 1", price: "₹150", available: true },
+    { image: "https://placehold.co/400x400/D9DCE0/22252A?text=Photo+2", name: "Sample Keychain 2", price: "₹200", available: true },
+    { image: "https://placehold.co/400x400/D9DCE0/22252A?text=Photo+3", name: "Sample Keychain 3", price: "₹120", available: false }
+  ];
+
+  const grid = document.getElementById('catalog');
+  items.forEach(item => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <div class="tag-hole"></div>
+      <img src="${item.image}" alt="${item.name}">
+      <div class="info">
+        <p class="name">${item.name}</p>
+        <p class="price">${item.price}</p>
+        <span class="status ${item.available ? '' : 'sold'}">${item.available ? 'Available' : 'Sold'}</span>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+</script>
+
+</body>
+</html>
