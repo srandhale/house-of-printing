@@ -132,14 +132,14 @@
 
 <script>
   // ---- EDIT YOUR ITEMS HERE ----
-  // image: paste a photo link (upload to imgur.com, or your phone's cloud photo link)
+  // image: path to your photo inside the images/ folder
   // name: item name
   // price: price text
   // available: true = "Available", false = "Sold"
   const items = [
-    { image: "https://placehold.co/400x400/D9DCE0/22252A?text=Photo+1", name: "Sample Keychain 1", price: "₹150", available: true },
-    { image: "https://placehold.co/400x400/D9DCE0/22252A?text=Photo+2", name: "Sample Keychain 2", price: "₹200", available: true },
-    { image: "https://placehold.co/400x400/D9DCE0/22252A?text=Photo+3", name: "Sample Keychain 3", price: "₹120", available: false }
+    { image: "images/logo%20v1%20edited.png", name: "Logo Edition Keychain" },
+    { image: "images/round-ring.PNG", name: "Round Ring Keychain" },
+    { image: "images/books_name.PNG", name: "Books Name Keychain" }
   ];
 
   const grid = document.getElementById('catalog');
@@ -151,8 +151,6 @@
       <img src="${item.image}" alt="${item.name}">
       <div class="info">
         <p class="name">${item.name}</p>
-        <p class="price">${item.price}</p>
-        <span class="status ${item.available ? '' : 'sold'}">${item.available ? 'Available' : 'Sold'}</span>
       </div>
     `;
     grid.appendChild(card);
